@@ -1,0 +1,8 @@
+{
+  "short_name": "Connect4App",
+  "name": "Connect4 App",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
