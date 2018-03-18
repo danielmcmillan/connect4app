@@ -237,8 +237,12 @@
       }
     ],
     "template-curly-spacing": "warn",
+    "no-console": "warn",
     "react/jsx-boolean-value": "warn",
-    "react/jsx-closing-bracket-location": "warn",
+    "react/jsx-closing-bracket-location": [
+      "warn",
+      "after-props"
+    ],
     "react/jsx-equals-spacing": "warn",
     "react/jsx-uses-vars": "warn",
     "react/jsx-max-props-per-line": [
