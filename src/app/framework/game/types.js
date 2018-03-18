@@ -3,12 +3,13 @@
  * @flow
  */
 
-import type { Board } from '../connect4/types';
+import type { Board, BoardColumn, Player } from '../connect4/types';
 
 // State
 
 export type GameState = {
 	board: Board,
+	currentPlayer: Player,
 };
 
 // Actions
@@ -17,10 +18,11 @@ export type ResetGameAction = {
   type: "RESET_GAME",
 };
 
-export type StartNextTurnAction = {
-  type: "START_NEXT_TURN",
+export type PlayPieceAction = {
+	type: "PLAY_PIECE",
+	column: BoardColumn,
 };
 
 export type GameAction =
 	| ResetGameAction
-	| StartNextTurnAction;
+	| PlayPieceAction;

@@ -2,18 +2,20 @@
  * Author - Daniel McMillan
  * @flow
  */
-import * as Type from './types';
+import * as Game from './types';
+import type { BoardColumn } from '../types';
 
 /**
  * Action causing the state of the game to reset.
  */
-export const resetGame = (): Type.ResetGameAction => ({
+export const resetGame = (): Game.ResetGameAction => ({
 	type: 'RESET_GAME',
 });
 
 /**
- * Action proceeding the game to the next player
+ * Action that adds a piece to the board and proceeds to the next turn.
  */
-export const startNextTurn = (): Type.StartNextTurnAction => ({
-	type: 'START_NEXT_TURN',
+export const playPiece = (column: BoardColumn): Game.PlayPieceAction => ({
+	type: 'PLAY_PIECE',
+	column,
 });

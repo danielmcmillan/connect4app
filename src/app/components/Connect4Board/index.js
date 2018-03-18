@@ -91,17 +91,15 @@ class Connect4Board extends React.Component<Props, ComponentState> {
 					this.props.slotRows.map((rowSlots, row) => (
 						<div key={row} style={rowStyle(row)}>
 							{rowSlots.map((player, col) => (
-								<div key={`${row}x${col}`} style={cellStyle}>
-									<Slot
-										onMouseEnter={() => this.handleColumnHover(col, false)}
-										onMouseLeave={() => this.handleColumnHover(col, true)}
-										onClick={() => this.handleColumnPress(col)} />
+								<div
+									key={`${row}x${col}`}
+									style={cellStyle}
+									onMouseEnter={() => this.handleColumnHover(col, false)}
+									onMouseLeave={() => this.handleColumnHover(col, true)}
+									onClick={() => this.handleColumnPress(col)}>
+									<Slot />
 									{player != null &&
-										<SlotPiece
-											player={player}
-											onMouseEnter={() => this.handleColumnHover(col, false)}
-											onMouseLeave={() => this.handleColumnHover(col, true)}
-											onClick={() => this.handleColumnPress(col)} />
+										<SlotPiece player={player} />
 									}
 								</div>
 							))}

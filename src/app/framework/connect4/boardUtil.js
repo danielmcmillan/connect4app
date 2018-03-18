@@ -2,7 +2,7 @@
  * Author - Daniel McMillan
  * @flow
  */
-import type { Board, Player, BoardColumn, BoardRow } from './types';
+import type { Board, Player, BoardColumn, BoardRow, BoardSlotArray } from './types';
 import { rowForMove, winningPieces } from './wasm';
 
 const emptySlotChar = '.';
@@ -94,7 +94,7 @@ export const getWinningPieces = (board: Board, player: Player): Array<[BoardRow,
  * @param board Board to check for winning pieces in.
  * @return Array of Array of (Player or null)
  */
-export const getBoardSlotArray = (board: Board): Array<Array<Player | null>> => {
+export const getBoardSlotArray = (board: Board): BoardSlotArray => {
 	const rows = [];
 	let i = 0;
 	for (let row = 0; row < boardHeight; ++row) {

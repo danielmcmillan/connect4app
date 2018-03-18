@@ -23,3 +23,4 @@ export type ActionType = $ElementType<Action, "type">;
 
 // Export all types
 export * from './game/types';
+export * from './connect4/types';
