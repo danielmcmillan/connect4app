@@ -111,6 +111,7 @@ export const getBoardSlotArray = (board: Board): Array<Array<Player | null>> => 
 				rows[row].push(null);
 				break;
 			}
+			++i;
 		}
 		// Skip the row separator character
 		++i;

@@ -60,3 +60,14 @@ test('getBoardSlotArray returns arrays will all elements null for empty board', 
 		[null, null, null, null, null, null, null],
 	]);
 });
+
+test('getBoardSlotArray returns arrays will all elements null for empty board', () => {
+	expect(util.getBoardSlotArray('.r.....,.......,.......,.......,.......,.......')).toEqual([
+		[null, 'red', null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+	]);
+});
