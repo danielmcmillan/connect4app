@@ -86,3 +86,34 @@ export const getWinningPieces = (board: Board, player: Player): Array<[BoardRow,
 	}
 	return pieces;
 };
+
+/**
+ * Get the pieces in the board as an array of rows.
+ * Each row is an array with an element for each column. Each element is the
+ * player owning the piece at that position, or null if there is no piece.
+ * @param board Board to check for winning pieces in.
+ * @return Array of Array of (Player or null)
+ */
+export const getBoardSlotArray = (board: Board): Array<Array<Player | null>> => {
+	const rows = [];
+	let i = 0;
+	for (let row = 0; row < boardHeight; ++row) {
+		rows[row] = [];
+		for (let col = 0; col < boardWidth; ++col) {
+			switch (board[i]) {
+			case 'r':
+				rows[row].push('red');
+				break;
+			case 'y':
+				rows[row].push('yellow');
+				break;
+			default:
+				rows[row].push(null);
+				break;
+			}
+		}
+		// Skip the row separator character
+		++i;
+	}
+	return rows;
+};

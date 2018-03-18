@@ -49,3 +49,14 @@ test('getWinningPieces', () => {
 	expect(util.getWinningPieces('', 'red')).toEqual([[0, 2], [1, 3], [2, 4], [3, 5]]);
 	expect(util.getWinningPieces('', 'yellow')).toBeNull();
 });
+
+test('getBoardSlotArray returns arrays will all elements null for empty board', () => {
+	expect(util.getBoardSlotArray(util.getEmptyBoard())).toEqual([
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+		[null, null, null, null, null, null, null],
+	]);
+});
