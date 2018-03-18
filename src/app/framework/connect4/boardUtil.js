@@ -71,7 +71,7 @@ export const playInColumn = (board: Board, column: BoardColumn, player: Player):
 export const getWinningPieces = (board: Board, player: Player): Array<[BoardRow, BoardColumn]> | null => {
 	const yellow = player === 'yellow';
 	const winningBoard = winningPieces(board, yellow);
-	if (winningBoard == null) {
+	if (winningBoard.length === 0) {
 		return null;
 	}
 
