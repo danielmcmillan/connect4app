@@ -5,11 +5,26 @@
 
 import type { Board, BoardColumn, Player } from '../connect4/types';
 
+// General
+
+export type PlayerConfig =
+| {
+	type: 'human',
+}
+| {
+	type: 'ai',
+	difficulty: number,
+};
+
 // State
 
 export type GameState = {
 	board: Board,
 	currentPlayer: Player,
+	gameOver: boolean,
+	players: {
+		[Player]: PlayerConfig,
+	},
 };
 
 // Actions

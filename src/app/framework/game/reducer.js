@@ -10,17 +10,27 @@ import { computeMove } from '../connect4/ai';
 export const gameInitialState: GameState = {
 	board: util.getEmptyBoard(),
 	currentPlayer: 'red',
+	gameOver: false,
+	players: {
+		red: { type: 'human' },
+		yellow: {
+			type: 'ai',
+			difficulty: 2,
+		},
+	},
 };
 
 /**
  * Update the state of the game to start a new turn.
+ * Proceeds to the next turn if current player is AI.
  */
 const startTurn = (state: GameState): GameState => {
-	if (state.currentPlayer === 'yellow') {
+	const playerConfig = state.players[state.currentPlayer];
+	if (playerConfig.type === 'ai') {
 		// AI Player
-		const move = computeMove(state.board, state.currentPlayer);
+		const move = computeMove(state.board, state.currentPlayer, playerConfig.difficulty);
 		const board = util.playInColumn(state.board, move, state.currentPlayer);
-		return completeTurn({
+		return nextTurn({
 			...state,
 			board: board,
 		});
@@ -33,9 +43,9 @@ const startTurn = (state: GameState): GameState => {
 /**
  * Update the state of the game to proceed to the next player's turn.
  */
-const completeTurn = (state: GameState): GameState => {
-	const winningPieces = util.getWinningPieces(state.board, state.currentPlayer);
-	if (winningPieces == null) {
+const nextTurn = (state: GameState): GameState => {
+	const winningBoard = util.winningPiecesBoard(state.board, state.currentPlayer);
+	if (winningBoard == null) {
 		// Game not won yet, start next turn
 		const nextPlayer = state.currentPlayer === 'red' ? 'yellow' : 'red';
 		return startTurn({
@@ -44,7 +54,11 @@ const completeTurn = (state: GameState): GameState => {
 		});
 	}
 	else {
-		return gameInitialState;
+		return {
+			...state,
+			board: winningBoard,
+			gameOver: true,
+		};
 	}
 };
 
@@ -59,8 +73,11 @@ export const gameReducer = (
 	case 'RESET_GAME':
 		return gameInitialState;
 	case 'PLAY_PIECE':
+		if (state.gameOver) {
+			return gameInitialState;
+		}
 		if (util.canPlayColumn(state.board, action.column)) {
-			return completeTurn({
+			return nextTurn({
 				...state,
 				board: util.playInColumn(state.board, action.column, state.currentPlayer),
 			});

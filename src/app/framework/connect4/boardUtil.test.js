@@ -16,7 +16,7 @@ jest.mock('./wasm', () => ({
 	}),
 	winningPieces: jest.fn((board, yellow) => {
 		if (yellow) {
-			return null;
+			return '';
 		}
 		else {
 			return '..r....,...r...,....r..,.....r.,.......,.......';
@@ -45,9 +45,9 @@ test('playInColumn', () => {
 	expect(util.playInColumn(board, 5, 'red')).toBe('..r..y.,..r..y.,..r..y.,..r..y.,..r..r.,..r....');
 });
 
-test('getWinningPieces', () => {
-	expect(util.getWinningPieces('', 'red')).toEqual([[0, 2], [1, 3], [2, 4], [3, 5]]);
-	expect(util.getWinningPieces('', 'yellow')).toBeNull();
+test('winningPiecesBoard', () => {
+	expect(util.winningPiecesBoard('', 'red')).toBe('..r....,...r...,....r..,.....r.,.......,.......');
+	expect(util.winningPiecesBoard('', 'yellow')).toBeNull();
 });
 
 test('getBoardSlotArray returns arrays will all elements null for empty board', () => {

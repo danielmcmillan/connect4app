@@ -63,28 +63,18 @@ export const playInColumn = (board: Board, column: BoardColumn, player: Player):
 };
 
 /**
- * Get an array of the [row, column] slot location of pieces that are part of a winning connection.
+ * Get a Board containing only pieces that are part of a winning connection.
  * @param board Board to check for winning pieces in.
  * @param player Player to check winning pieces for.
- * @return Array of the [row, column] of winning pieces, or null if the player hasn't won.
+ * @return A new Board with winning pieces, or null if the player hasn't won.
  */
-export const getWinningPieces = (board: Board, player: Player): Array<[BoardRow, BoardColumn]> | null => {
+export const winningPiecesBoard = (board: Board, player: Player): Board | null => {
 	const yellow = player === 'yellow';
 	const winningBoard = winningPieces(board, yellow);
 	if (winningBoard.length === 0) {
 		return null;
 	}
-
-	const pieces = [];
-	for (let row = 0; row < boardHeight; ++row) {
-		for (let col = 0; col < boardWidth; ++col) {
-			const index = getBoardIndex(row, col);
-			if (winningBoard[index] !== emptySlotChar) {
-				pieces.push([row, col]);
-			}
-		}
-	}
-	return pieces;
+	return winningBoard;
 };
 
 /**
