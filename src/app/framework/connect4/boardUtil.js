@@ -108,3 +108,12 @@ export const getBoardSlotArray = (board: Board): BoardSlotArray => {
 	}
 	return rows;
 };
+
+/**
+ * Check whether the given board is full (no empty slots).
+ * @param board Board to check for fullness.
+ * @return True iff the board is full.
+ */
+export const isBoardFull = (board: Board): boolean => {
+	return !board.includes('.');
+};

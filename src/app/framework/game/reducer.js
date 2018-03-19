@@ -49,6 +49,13 @@ const nextTurn = (state: GameState): GameState => {
 	const nextPlayer = state.currentPlayer === 'red' ? 'yellow' : 'red';
 	const winningBoard = util.winningPiecesBoard(state.board, state.currentPlayer);
 	if (winningBoard == null) {
+		if (util.isBoardFull(state.board)) {
+			// Draw
+			return {
+				...state,
+				gameOver: true,
+			};
+		}
 		// Game not over yet, start next turn
 		return startTurn({
 			...state,
