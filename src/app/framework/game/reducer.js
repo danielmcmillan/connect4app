@@ -13,17 +13,35 @@ export const gameInitialState: GameState = {
 };
 
 /**
+ * Update the state of the game to start a new turn.
+ */
+const startTurn = (state: GameState): GameState => {
+	if (state.currentPlayer === 'yellow') {
+		// AI Player
+		const move = computeMove(state.board, state.currentPlayer);
+		const board = util.playInColumn(state.board, move, state.currentPlayer);
+		return completeTurn({
+			...state,
+			board: board,
+		});
+	}
+	else {
+		return state;
+	}
+};
+
+/**
  * Update the state of the game to proceed to the next player's turn.
  */
 const completeTurn = (state: GameState): GameState => {
 	const winningPieces = util.getWinningPieces(state.board, state.currentPlayer);
 	if (winningPieces == null) {
-		// Game not won yet, continue
+		// Game not won yet, start next turn
 		const nextPlayer = state.currentPlayer === 'red' ? 'yellow' : 'red';
-		return {
+		return startTurn({
 			...state,
 			currentPlayer: nextPlayer,
-		};
+		});
 	}
 	else {
 		return gameInitialState;
