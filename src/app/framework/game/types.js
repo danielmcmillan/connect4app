@@ -29,15 +29,25 @@ export type GameState = {
 
 // Actions
 
-export type ResetGameAction = {
-  type: "RESET_GAME",
+export type StartGameAction = {
+	type: 'START_GAME',
 };
 
 export type PlayPieceAction = {
-	type: "PLAY_PIECE",
+	type: 'PLAY_PIECE',
 	column: BoardColumn,
 };
 
+export type UpdateConfigAction = {
+	type: 'UPDATE_CONFIG',
+	players?: {
+		red?: PlayerConfig,
+		yellow?: PlayerConfig,
+	},
+	startPlayer?: Player,
+};
+
 export type GameAction =
-	| ResetGameAction
-	| PlayPieceAction;
+	| StartGameAction
+	| PlayPieceAction
+	| UpdateConfigAction;
