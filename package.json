@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "lodash": "^4.17.5",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.7",
-    "react-scripts": "1.1.1",
-    "redux": "^3.7.2",
-    "reselect": "^3.0.1"
+    "lodash": "^4.17.11",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-redux": "^6.0.1",
+    "react-scripts": "^2.1.5",
+    "redux": "^4.0.1",
+    "reselect": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,11 +18,15 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.2",
-    "eslint": "^4.19.0",
-    "eslint-plugin-flowtype": "^2.46.1",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.68.0"
-  }
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-react": "^7.12.4",
+    "flow-bin": "^0.93.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
