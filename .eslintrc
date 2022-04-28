@@ -1,14 +1,12 @@
 {
-  "parser": "babel-eslint",
+  // "parser": "babel-eslint",
   "plugins": [
     "react",
-    "flowtype",
     "import"
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:flowtype/recommended"
+    "plugin:react/recommended"
   ],
   "env": {
     "browser": true,
@@ -50,10 +48,7 @@
       }
     ],
     "camelcase": "warn",
-    "capitalized-comments": [
-      "warn",
-      "always"
-    ],
+    "capitalized-comments": "off",
     "comma-dangle": [
       "warn",
       "always-multiline"
@@ -79,7 +74,7 @@
         "allowArrowFunctions": true
       }
     ],
-    "function-paren-newline": "warn",
+    "function-paren-newline": "off",
     "generator-star-spacing": "warn",
     "id-blacklist": "off",
     "id-length": [
@@ -92,7 +87,9 @@
     ],
     "indent": [
       "warn",
-      "tab"
+      {
+        "space": 2
+      }
     ],
     "jsx-quotes": [
       "warn",
@@ -123,7 +120,7 @@
         "ignoreTemplateLiterals": true
       }
     ],
-    "multiline-comment-style": "warn",
+    "multiline-comment-style": "off",
     "multiline-ternary": [
       "warn",
       "always-multiline"
@@ -203,10 +200,7 @@
       "warn",
       "as-needed"
     ],
-    "quotes": [
-      "warn",
-      "single"
-    ],
+    "quotes": "off",
     "require-await": "warn",
     "require-jsdoc": [
       "warn",
@@ -274,23 +268,6 @@
         "beforeClosing": "never"
       }
     ],
-    "react/jsx-wrap-multilines": "warn",
-    "flowtype/boolean-style": "warn",
-    "flowtype/delimiter-dangle": [
-      "warn",
-      "always-multiline"
-    ],
-    "flowtype/no-dupe-keys": "error",
-    "flowtype/no-primitive-constructor-types": "warn",
-    "flowtype/no-types-missing-file-annotation": "error",
-    "flowtype/no-unused-expressions": "warn",
-    "flowtype/no-weak-types": "off",
-    "flowtype/object-type-delimiter": "error",
-    "flowtype/semi": "error",
-    "flowtype/generic-spacing": "warn",
-    "flowtype/space-before-generic-bracket": "warn",
-    "flowtype/space-after-type-colon": "warn",
-    "flowtype/space-before-type-colon": "warn",
-    "flowtype/union-intersection-spacing": "warn"
+    "react/jsx-wrap-multilines": "warn"
   }
 }
